@@ -1,8 +1,19 @@
 import React from 'react';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, DateTime, SplineAreaSeries, Legend } from '@syncfusion/ej2-react-charts';
-
+import {
+  ChartComponent,
+  SeriesCollectionDirective,
+  SeriesDirective,
+  Inject,
+  DateTime,
+  SplineAreaSeries,
+  Legend,
+} from '@syncfusion/ej2-react-charts';
 import { ChartsHeader } from '../../components';
-import { areaCustomSeries, areaPrimaryXAxis, areaPrimaryYAxis } from '../../data/dummy';
+import {
+  areaCustomSeries,
+  areaPrimaryXAxis,
+  areaPrimaryYAxis,
+} from '../../data/dummy';
 import { useStateContext } from '../../contexts/ContextProvider';
 
 const Area = () => {
@@ -23,7 +34,9 @@ const Area = () => {
           <Inject services={[SplineAreaSeries, DateTime, Legend]} />
           <SeriesCollectionDirective>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-            {areaCustomSeries.map((item, index) => <SeriesDirective key={index} {...item} />)}
+            {areaCustomSeries.map((item, index) => (
+              <SeriesDirective key={index} {...item} />
+            ))}
           </SeriesCollectionDirective>
         </ChartComponent>
       </div>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
-
 import { scheduleData } from '../data/dummy';
 import { Header } from '../components';
 
-// eslint-disable-next-line react/destructuring-assignment
-const PropertyPane = (props) => <div className="mt-5">{props.children}</div>;
+const PropertyPane = ({ children }) => (
+  <div className="mt-5">{children}</div>
+);
 
 const Scheduler = () => {
   const [scheduleObj, setScheduleObj] = useState();
@@ -32,14 +32,12 @@ const Scheduler = () => {
         dragStart={onDragStart}
       >
         {/* <ViewsDirective>
-          { ['Day', 'Week', 'WorkWeek', 'Month', 'Agenda'].map((item) => <ViewDirective key={item} option={item} />)}
+          {['Day', 'Week', 'WorkWeek', 'Month', 'Agenda'].map((item) => <ViewDirective key={item} option={item} />)}
         </ViewsDirective> */}
         <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
       </ScheduleComponent>
       <PropertyPane>
-        <table
-          style={{ width: '100%', background: 'white' }}
-        >
+        <table style={{ width: '100%', background: 'white' }}>
           <tbody>
             <tr style={{ height: '50px' }}>
               <td style={{ width: '100%' }}>
