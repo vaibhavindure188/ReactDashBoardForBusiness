@@ -32,9 +32,17 @@ const LineChart = () => {
     >
       <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
       <SeriesCollectionDirective>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {lineCustomSeries.map((item, index) => (
-          <SeriesDirective key={index} {...item} />
+          <SeriesDirective
+            key={index}
+            dataSource={item.dataSource}
+            xName={item.xName}
+            yName={item.yName}
+            name={item.name}
+            width={item.width}
+            marker={item.marker}
+            type={item.type}
+          />
         ))}
       </SeriesCollectionDirective>
     </ChartComponent>

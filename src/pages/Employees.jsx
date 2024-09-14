@@ -12,7 +12,6 @@ import { Header } from '../components';
 
 const Employees = () => {
   const toolbarOptions = ['Search'];
-
   const editing = { allowDeleting: true, allowEditing: true };
 
   return (
@@ -28,9 +27,16 @@ const Employees = () => {
         toolbar={toolbarOptions}
       >
         <ColumnsDirective>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           {employeesGrid.map((item, index) => (
-            <ColumnDirective key={index} {...item} />
+            <ColumnDirective
+              key={index}
+              headerText={item.headerText}
+              width={item.width}
+              template={item.template}
+              textAlign={item.textAlign}
+              field={item.field}
+              format={item.format}
+            />
           ))}
         </ColumnsDirective>
         <Inject services={[Search, Page]} />
@@ -38,4 +44,5 @@ const Employees = () => {
     </div>
   );
 };
+
 export default Employees;

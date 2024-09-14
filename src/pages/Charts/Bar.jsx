@@ -24,7 +24,7 @@ const Bar = () => {
   return (
     <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <ChartsHeader category="Bar" title="Olympic Medal Counts - RIO" />
-      <div className=" w-full">
+      <div className="w-full">
         <ChartComponent
           id="charts"
           primaryXAxis={barPrimaryXAxis}
@@ -38,9 +38,25 @@ const Bar = () => {
             services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}
           />
           <SeriesCollectionDirective>
-            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {barCustomSeries.map((item, index) => (
-              <SeriesDirective key={index} {...item} />
+              <SeriesDirective
+                key={index}
+                dataSource={item.dataSource}
+                xName={item.xName}
+                yName={item.yName}
+                name={item.name}
+                type={item.type}
+                marker={{
+                  dataLabel: {
+                    visible: item.marker.dataLabel.visible,
+                    position: item.marker.dataLabel.position,
+                    font: {
+                      fontWeight: item.marker.dataLabel.font.fontWeight,
+                      color: item.marker.dataLabel.font.color,
+                    },
+                  },
+                }}
+              />
             ))}
           </SeriesCollectionDirective>
         </ChartComponent>

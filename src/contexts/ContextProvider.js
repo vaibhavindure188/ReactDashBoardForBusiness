@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 const StateContext = createContext();
 
@@ -27,30 +27,42 @@ export const ContextProvider = ({ children }) => {
     localStorage.setItem('colorMode', color);
   };
 
-  const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
+  const handleClick = (clicked) => {
+    setIsClicked({ ...initialState, [clicked]: true });
+  };
+
+  // Memoize the context value to prevent recreation on every render
+  const contextValue = useMemo(
+    () => ({
+      currentColor,
+      currentMode,
+      activeMenu,
+      screenSize,
+      setScreenSize,
+      handleClick,
+      isClicked,
+      initialState,
+      setIsClicked,
+      setActiveMenu,
+      setCurrentColor,
+      setCurrentMode,
+      setMode,
+      setColor,
+      themeSettings,
+      setThemeSettings,
+    }),
+    [
+      currentColor,
+      currentMode,
+      activeMenu,
+      screenSize,
+      isClicked,
+      themeSettings,
+    ],
+  );
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <StateContext.Provider
-      value={{
-        currentColor,
-        currentMode,
-        activeMenu,
-        screenSize,
-        setScreenSize,
-        handleClick,
-        isClicked,
-        initialState,
-        setIsClicked,
-        setActiveMenu,
-        setCurrentColor,
-        setCurrentMode,
-        setMode,
-        setColor,
-        themeSettings,
-        setThemeSettings,
-      }}
-    >
+    <StateContext.Provider value={contextValue}>
       {children}
     </StateContext.Provider>
   );

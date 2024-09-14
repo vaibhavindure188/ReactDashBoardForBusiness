@@ -33,9 +33,18 @@ const Area = () => {
         >
           <Inject services={[SplineAreaSeries, DateTime, Legend]} />
           <SeriesCollectionDirective>
-            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {areaCustomSeries.map((item, index) => (
-              <SeriesDirective key={index} {...item} />
+              <SeriesDirective
+                key={index}
+                dataSource={item.dataSource}
+                xName={item.xName}
+                yName={item.yName}
+                name={item.name}
+                opacity={item.opacity}
+                type={item.type}
+                width={item.width}
+                marker={item.marker}
+              />
             ))}
           </SeriesCollectionDirective>
         </ChartComponent>
