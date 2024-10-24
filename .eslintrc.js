@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    "react/react-in-jsx-scope": "off",
     'react/function-component-definition': 0,
     'import/extensions': 0,
     'react/prop-types': 0,

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
-import { apiGateway } from '../enverinments/envirnment';
+import axios from 'axios';
 import {
   GridComponent,
   Inject,
@@ -9,8 +8,9 @@ import {
   Search,
   Page,
 } from '@syncfusion/ej2-react-grids';
-import {  employeesGrid } from '../data/dummy';
+import { employeesGrid } from '../data/dummy';
 import { Header } from '../components';
+import { apiGateway } from '../enverinments/envirnment';
 
 const Employees = () => {
   const [employeesData, setEmployees] = useState([]);
@@ -18,16 +18,18 @@ const Employees = () => {
   useEffect(() => {
     const getALLEmployee = async () => {
       try {
-        const response = await axios.get(`${apiGateway}/api/employees/getAllEmployee`); // Replace with your API endpoint
+        const response = await axios.get(
+          `${apiGateway}/api/employees/getAllEmployee`,
+        );
         setEmployees(response.data);
-        console.log(employeesData)
+        console.log(employeesData);
       } catch (error) {
         console.error('Error fetching employees:', error);
       }
     };
 
-    getALLEmployee(); // Call the async function
-  }, []); 
+    getALLEmployee();
+  }, []);
   const toolbarOptions = ['Search'];
   const editing = { allowDeleting: true, allowEditing: true };
   return (

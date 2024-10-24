@@ -1,6 +1,5 @@
-import React from 'react';
-import { useState,useEffect } from 'react';
-import axios from 'axios'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   GridComponent,
   ColumnsDirective,
@@ -15,7 +14,7 @@ import {
   Edit,
   Inject,
 } from '@syncfusion/ej2-react-grids';
-import {  contextMenuItems, ordersGrid } from '../data/dummy';
+import { contextMenuItems, ordersGrid } from '../data/dummy';
 import { Header } from '../components';
 import { apiGateway } from '../enverinments/envirnment';
 
@@ -27,16 +26,18 @@ const Orders = () => {
   useEffect(() => {
     const getALLOrders = async () => {
       try {
-        const response = await axios.get(`${apiGateway}/api/orders/getAllOrders`); // Replace with your API endpoint
+        const response = await axios.get(
+          `${apiGateway}/api/orders/getAllOrders`,
+        );
         setOrders(response.data);
-        console.log(ordersData)
+        console.log(ordersData);
       } catch (error) {
         console.error('Error fetching employees:', error);
       }
     };
 
-    getALLOrders(); // Call the async function
-  }, []); 
+    getALLOrders();
+  }, []);
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Orders" />

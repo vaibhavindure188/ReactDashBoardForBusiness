@@ -1,6 +1,5 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
-import axios  from 'axios';
+import axios from 'axios';
 import {
   GridComponent,
   ColumnsDirective,
@@ -13,30 +12,31 @@ import {
   Sort,
   Filter,
 } from '@syncfusion/ej2-react-grids';
-import {  customersGrid } from '../data/dummy';
+import { customersGrid } from '../data/dummy';
 import { Header } from '../components';
 import { apiGateway } from '../enverinments/envirnment';
+
 const Customers = () => {
-
   const [customersData, setcustomersData] = useState([]);
-
   useEffect(() => {
     const getALLCustomers = async () => {
       try {
-        const response = await axios.get(`${apiGateway}/api/customers/getAllCustomers`); // Replace with your API endpoint
+        const response = await axios.get(
+          `${apiGateway}/api/customers/getAllCustomers`,
+        ); // Replace with your API endpoint
         setcustomersData(response.data);
-        console.log(customersData)
+        console.log(customersData);
       } catch (error) {
         console.error('Error fetching employees:', error);
       }
     };
 
     setTimeout(() => {
-      console.log(customersData)
+      console.log(customersData);
     }, 5000);
 
-    getALLCustomers(); // Call the async function
-  }, []); 
+    getALLCustomers();
+  }, []);
   const selectionsettings = { persistSelection: true };
   const toolbarOptions = ['Delete'];
   const editing = { allowDeleting: true, allowEditing: true };
