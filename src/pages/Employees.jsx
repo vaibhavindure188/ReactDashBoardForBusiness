@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import { apiGateway } from '../enverinments/envirnment';
 import {
   GridComponent,
   Inject,
@@ -17,7 +18,7 @@ const Employees = () => {
   useEffect(() => {
     const getALLEmployee = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/employees/getAllEmployee'); // Replace with your API endpoint
+        const response = await axios.get(`${apiGateway}/api/employees/getAllEmployee`); // Replace with your API endpoint
         setEmployees(response.data);
         console.log(employeesData)
       } catch (error) {

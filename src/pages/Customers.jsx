@@ -15,7 +15,7 @@ import {
 } from '@syncfusion/ej2-react-grids';
 import {  customersGrid } from '../data/dummy';
 import { Header } from '../components';
-
+import { apiGateway } from '../enverinments/envirnment';
 const Customers = () => {
 
   const [customersData, setcustomersData] = useState([]);
@@ -23,7 +23,7 @@ const Customers = () => {
   useEffect(() => {
     const getALLCustomers = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/customers/getAllCustomers'); // Replace with your API endpoint
+        const response = await axios.get(`${apiGateway}/api/customers/getAllCustomers`); // Replace with your API endpoint
         setcustomersData(response.data);
         console.log(customersData)
       } catch (error) {

@@ -17,6 +17,7 @@ import {
 } from '@syncfusion/ej2-react-grids';
 import {  contextMenuItems, ordersGrid } from '../data/dummy';
 import { Header } from '../components';
+import { apiGateway } from '../enverinments/envirnment';
 
 const Orders = () => {
   const editing = { allowDeleting: true, allowEditing: true };
@@ -26,7 +27,7 @@ const Orders = () => {
   useEffect(() => {
     const getALLOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/orders/getAllOrders'); // Replace with your API endpoint
+        const response = await axios.get(`${apiGateway}/api/orders/getAllOrders`); // Replace with your API endpoint
         setOrders(response.data);
         console.log(ordersData)
       } catch (error) {
