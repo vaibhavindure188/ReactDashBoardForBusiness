@@ -1,1 +1,1 @@
-export const apiGateway = 'http://43.204.115.100:8000';
+export const apiGateway = 'http://localhost:8000';

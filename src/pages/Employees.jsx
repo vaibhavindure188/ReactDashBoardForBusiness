@@ -22,9 +22,9 @@ const Employees = () => {
           `${apiGateway}/api/employees/getAllEmployee`,
         );
         setEmployees(response.data);
-        console.log(employeesData);
       } catch (error) {
-        console.error('Error fetching employees:', error);
+        // eslint-disable-next-line
+        alert(error);
       }
     };
 

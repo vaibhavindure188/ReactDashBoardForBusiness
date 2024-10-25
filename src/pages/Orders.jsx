@@ -30,9 +30,9 @@ const Orders = () => {
           `${apiGateway}/api/orders/getAllOrders`,
         );
         setOrders(response.data);
-        console.log(ordersData);
       } catch (error) {
-        console.error('Error fetching employees:', error);
+        // eslint-disable-next-line
+        alert(error);
       }
     };
 

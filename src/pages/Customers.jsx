@@ -25,15 +25,11 @@ const Customers = () => {
           `${apiGateway}/api/customers/getAllCustomers`,
         ); // Replace with your API endpoint
         setcustomersData(response.data);
-        console.log(customersData);
       } catch (error) {
-        console.error('Error fetching employees:', error);
+        // eslint-disable-next-line
+        alert(error);
       }
     };
-
-    setTimeout(() => {
-      console.log(customersData);
-    }, 5000);
 
     getALLCustomers();
   }, []);
